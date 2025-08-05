@@ -21,6 +21,7 @@ import "./ModernMesas.css";
 const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
+const API_MESAS = `${API_BASE_URLS[0]}/mesas`;
 
 export default function TablaMesa() {
   const [mesas, setMesas] = useState([]);

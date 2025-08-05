@@ -7,6 +7,11 @@ const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
+const API_USUARIOS_URL = `${API_BASE_URLS[0]}/usuarios`;
+const API_ROLES_URL = `${API_BASE_URLS[0]}/roles`;
+
+
+
 
 export default function TablaEmpleados() {
   const [empleados, setEmpleados] = useState([]);
