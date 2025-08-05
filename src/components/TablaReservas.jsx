@@ -36,6 +36,7 @@ const API_BASE_URLS = [
 ];
 
 const API_BASE_URL = `${API_BASE_URLS[0]}/reservas`;
+
 export default function TablaReservas() {
   const [showForm, setShowForm] = useState(false);
   const [viewMode, setViewMode] = useState('cards'); // 'cards' or 'table'

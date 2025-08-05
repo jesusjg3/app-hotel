@@ -18,11 +18,11 @@ import {
 } from "react-icons/fa";
 import "./ModernServiciosExtras.css";
 
-const API_BASE_URLS = [
+const API_SERVICIOS_EXTRAS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
-const API_SERVICIOS_EXTRA = `${API_BASE_URLS[0]}/servicios-extras`;
+
 
 export default function ServiciosExtras() {
   const [servicios, setServicios] = useState([]);

@@ -46,6 +46,7 @@ export default function Index() {
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
+
   useEffect(() => {
     const fetchData = async () => {
       if (!token) return;

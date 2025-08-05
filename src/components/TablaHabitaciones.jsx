@@ -24,7 +24,7 @@ const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
-const API_URL = `${API_BASE_URLS[0]}/habitaciones`;
+const API_BASE_URL = `${API_BASE_URLS[0]}/habitaciones`;
 
 
 export default function TablaHabitaciones() {
