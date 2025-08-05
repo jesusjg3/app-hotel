@@ -3,9 +3,9 @@ import Swal from "sweetalert2";
 import { FaUser, FaEnvelope, FaUserTag, FaEdit, FaTrashAlt, FaSearch, FaPlus, FaTh, FaList, FaUserCheck, FaCalendarAlt, FaClock, FaFilter } from "react-icons/fa";
 import "./ModernEmpleados.css";
 
-const API_USUARIOS = "http://localhost:8000/api/usuarios";
-const API_ROLES = "http://localhost:8000/api/roles";
-const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
+const API_BASE_URLS = [
+  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
+];
 
 
 export default function TablaEmpleados() {

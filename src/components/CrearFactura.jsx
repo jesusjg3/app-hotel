@@ -31,9 +31,6 @@ import "./ModernFactura.css";
 
 
 const API_BASE_URLS = [
-  "http://localhost:8000/api",
-  "http://127.0.0.1:8000/api",
-  "http://localhost:8080/api",
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
