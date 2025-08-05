@@ -30,4 +30,4 @@ jobs:
           npm run build
 
       - name: Copiar archivo .htaccess a dist/
-        run: cp home/jesusjg3/plantillas/.htaccess $BASE_PATH/$PROJECT_NAME/dist/
+        run: cp /home/jesusjg3/plantillas/.htaccess $BASE_PATH/$PROJECT_NAME/dist/
