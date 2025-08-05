@@ -18,8 +18,12 @@ import {
 } from "react-icons/fa";
 import "./ModernMesas.css";
 
-const API_MESAS = "http://localhost:8000/api/mesas";
-const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
+const API_BASE_URLS = [
+  "http://localhost:8000/api",
+  "http://127.0.0.1:8000/api",
+  "http://localhost:8080/api",
+  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
+];
 
 export default function TablaMesa() {
   const [mesas, setMesas] = useState([]);

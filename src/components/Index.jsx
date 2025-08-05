@@ -42,10 +42,12 @@ export default function Index() {
   const rol = user?.rol;
   const token = localStorage.getItem('token');
 
-  // URLs base
-  const API_BASE_URL = "http://localhost:8000";
-  const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
-  const API_URL = API_BASE_URL_REMOTE; // <--- Cambia a API_BASE_URL si trabajas localmente
+  const API_BASE_URLS = [
+  "http://localhost:8000/api",
+  "http://127.0.0.1:8000/api",
+  "http://localhost:8080/api",
+  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
+];
 
   useEffect(() => {
     const fetchData = async () => {
