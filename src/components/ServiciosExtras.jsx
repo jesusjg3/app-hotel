@@ -22,6 +22,7 @@ const API_SERVICIOS_EXTRAS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
+const API_SERVICIOS_EXTRA = `${API_BASE_URLS[0]}`;
 
 
 export default function ServiciosExtras() {

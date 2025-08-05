@@ -35,7 +35,7 @@ const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
-const API_BASE_URL = `${API_BASE_URLS[0]}/reservas`;
+const API_BASE_URL = `${API_BASE_URLS[0]}`;
 
 export default function TablaReservas() {
   const [showForm, setShowForm] = useState(false);

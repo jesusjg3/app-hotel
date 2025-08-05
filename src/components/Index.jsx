@@ -45,6 +45,7 @@ export default function Index() {
   const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
+const API_URL = `${API_BASE_URLS[0]}`;
 
 
   useEffect(() => {

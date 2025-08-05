@@ -7,8 +7,8 @@ const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
-const API_USUARIOS = `${API_BASE_URLS[0]}/usuarios`;
-const API_ROLES = `${API_BASE_URLS[0]}/roles`;
+const API_USUARIOS = `${API_BASE_URLS[0]}`;
+const API_ROLES = `${API_BASE_URLS[0]}`;
 
 
 

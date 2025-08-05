@@ -32,6 +32,7 @@ import "./ModernFactura.css";
 const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
+const API_URL = `${API_BASE_URLS[0]}`;
 
 
 
@@ -85,7 +86,7 @@ export default function CrearFactura() {
       setError("");
 
       // 1. Obtener reserva
-      const resReserva = await fetch(`${API_BASE_URLS}/reservas/${reservaId}`, {
+      const resReserva = await fetch(`${API_URL}/reservas/${reservaId}`, {
         headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
       });
 
@@ -99,7 +100,7 @@ export default function CrearFactura() {
       // 2. Obtener cliente
       if (dataReserva.cliente_id) {
         try {
-          const resCliente = await fetch(`${API_BASE_URLs}/clientes/${dataReserva.cliente_id}`, {
+          const resCliente = await fetch(`${API_URL}/clientes/${dataReserva.cliente_id}`, {
             headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
           });
           if (resCliente.ok) {
@@ -113,7 +114,7 @@ export default function CrearFactura() {
 
       // 3. Obtener servicios extras de la reserva
       try {
-        const resServicios = await fetch(`${API_BASE_URLS}/reservas/${reservaId}/servicios`, {
+        const resServicios = await fetch(`${API_URL}/reservas/${reservaId}/servicios`, {
           headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
         });
         if (resServicios.ok) {
@@ -142,13 +143,13 @@ export default function CrearFactura() {
       let precioCampo = "";
 
       if (reservaData.tipo_reserva === "habitacion") {
-        urlRecurso = `${API_BASE_URLS}/habitaciones/${reservaData.id_objeto}`;
+        urlRecurso = `${API_URL}/habitaciones/${reservaData.id_objeto}`;
         precioCampo = "precio_noche";
       } else if (reservaData.tipo_reserva === "mesa") {
-        urlRecurso = `${API_BASE_URLS}/mesas/${reservaData.id_objeto}`;
+        urlRecurso = `${API_URL}/mesas/${reservaData.id_objeto}`;
         precioCampo = "precio_unitario";
       } else if (reservaData.tipo_reserva === "salon") {
-        urlRecurso = `${API_BASE_URLS}/salones/${reservaData.id_objeto}`;
+        urlRecurso = `${API_URL}/salones/${reservaData.id_objeto}`;
         precioCampo = "precio_alquiler";
       }
 
