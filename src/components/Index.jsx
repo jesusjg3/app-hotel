@@ -42,11 +42,8 @@ export default function Index() {
   const rol = user?.rol;
   const token = localStorage.getItem('token');
 
-  const API_BASE_URLS = [
-  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
-];
-const API_URL = `${API_BASE_URLS[0]}`;
-
+  // Corrección: Solo una constante de URL base y sin /api doble
+  const API_URL = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +52,8 @@ const API_URL = `${API_BASE_URLS[0]}`;
       try {
         setLoading(true);
         
-        const reservasResponse = await fetch(`${API_URL}/api/reservas`, {
+        // Corrección: No duplicar /api en endpoint
+        const reservasResponse = await fetch(`${API_URL}/reservas`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -65,13 +63,16 @@ const API_URL = `${API_BASE_URLS[0]}`;
         if (reservasResponse.ok) {
           const reservasData = await reservasResponse.json();
           const reservasConfirmadas = reservasData.filter(r => r.estado === "confirmado");
-          const reservasDelDia = reservasConfirmadas.filter(r => r.fecha === fechaSeleccionada);
+          // Corrección: fecha puede ser fecha_inicio según modelo
+          const reservasDelDia = reservasConfirmadas.filter(r => 
+            (r.fecha || r.fecha_inicio || '').slice(0, 10) === fechaSeleccionada
+          );
           setReservasHoy(reservasDelDia);
           setStats(prev => ({ ...prev, reservas: reservasConfirmadas.length }));
         }
 
         if (rol === "Administrador") {
-          const usuariosResponse = await fetch(`${API_URL}/api/usuarios`, {
+          const usuariosResponse = await fetch(`${API_URL}/usuarios`, {
             headers: { 
               "Authorization": `Bearer ${token}`,
               "Accept": "application/json"
@@ -80,7 +81,8 @@ const API_URL = `${API_BASE_URLS[0]}`;
           
           if (usuariosResponse.ok) {
             const usuariosData = await usuariosResponse.json();
-            const empleados = usuariosData.filter(u => u.rol === "Usuario");
+            // Corrección: rol puede ser "Empleado" o "Usuario", revisa tu modelo
+            const empleados = usuariosData.filter(u => u.rol === "Empleado" || u.rol === "Usuario");
             setStats(prev => ({ 
               ...prev, 
               usuarios: usuariosData.length,
@@ -89,7 +91,7 @@ const API_URL = `${API_BASE_URLS[0]}`;
           }
         }
 
-        const habitacionesResponse = await fetch(`${API_URL}/api/habitaciones`, {
+        const habitacionesResponse = await fetch(`${API_URL}/habitaciones`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -109,7 +111,7 @@ const API_URL = `${API_BASE_URLS[0]}`;
           }));
         }
 
-        const mesasResponse = await fetch(`${API_URL}/api/mesas`, {
+        const mesasResponse = await fetch(`${API_URL}/mesas`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -129,7 +131,7 @@ const API_URL = `${API_BASE_URLS[0]}`;
           }));
         }
 
-        const salonesResponse = await fetch(`${API_URL}/api/salones`, {
+        const salonesResponse = await fetch(`${API_URL}/salones`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -158,6 +160,7 @@ const API_URL = `${API_BASE_URLS[0]}`;
 
     fetchData();
   }, [fechaSeleccionada, rol, token]);
+  
   const StatCard = ({ icon: Icon, title, value, subtitle, color, onClick }) => (
     <div 
       className={`stat-card ${onClick ? 'clickable' : ''}`}
@@ -258,8 +261,9 @@ const API_URL = `${API_BASE_URLS[0]}`;
                         {reserva.tipo === "salon" && <FaChair />}
                       </div>
                       <div className="reserva-info">
-                        <strong>{reserva.cliente || 'Cliente no especificado'}</strong>
-                        <p>{reserva.tipo} - {reserva.hora || 'Hora no especificada'}</p>
+                        {/* Corrección: puede ser reserva.cliente.nombre */}
+                        <strong>{reserva.cliente?.nombre || reserva.cliente || 'Cliente no especificado'}</strong>
+                        <p>{reserva.tipo} - {reserva.hora || reserva.hora_inicio || 'Hora no especificada'}</p>
                       </div>
                       <div className="reserva-status">
                         <span className={`status ${reserva.estado}`}>
@@ -344,7 +348,7 @@ const API_URL = `${API_BASE_URLS[0]}`;
             <p>Control total del sistema hotelero</p>
           </div>
           <div className="admin-actions">
-            <button className="action-btn primary">
+            <button className="action-btn primary" onClick={() => navigate('/dashboard/reservas')}>
               <FaPlus /> Nueva Reserva
             </button>
           </div>
@@ -540,7 +544,7 @@ const API_URL = `${API_BASE_URLS[0]}`;
               </div>
               <div className="task-item completed">
                 <div className="task-checkbox">
-                  <input type="checkbox" checked />
+                  <input type="checkbox" checked readOnly />
                 </div>
                 <div className="task-content">
                   <strong>Check-in familia Rodríguez</strong>

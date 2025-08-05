@@ -20,12 +20,8 @@ import {
 } from "react-icons/fa";
 import "./ModernHabitaciones.css";
 
-const API_BASE_URLS = [
-  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
-];
-
-const API_BASE_URL = `${API_BASE_URLS[0]}`;
-
+// Solo una constante de URL base, sin array y sin /api doble
+const API_BASE_URL = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function TablaHabitaciones() {
   const [showForm, setShowForm] = useState(false);
@@ -55,17 +51,19 @@ export default function TablaHabitaciones() {
 
   useEffect(() => {
     fetchHabitaciones();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     calculateStats();
+    // eslint-disable-next-line
   }, [habitaciones]);
 
   const fetchHabitaciones = async () => {
     const token = localStorage.getItem("token");
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/habitaciones`, {
+      const response = await fetch(`${API_BASE_URL}/habitaciones`, {
         headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
       });
       if (response.ok) {
@@ -128,13 +126,13 @@ export default function TablaHabitaciones() {
     try {
       let response;
       if (habitacionEditando) {
-        response = await fetch(`${API_BASE_URL}/api/habitaciones/${habitacionEditando.id}`, {
+        response = await fetch(`${API_BASE_URL}/habitaciones/${habitacionEditando.id}`, {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(habitacionData),
         });
       } else {
-        response = await fetch(`${API_BASE_URL}/api/habitaciones`, {
+        response = await fetch(`${API_BASE_URL}/habitaciones`, {
           method: "POST",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(habitacionData),
@@ -187,7 +185,7 @@ export default function TablaHabitaciones() {
 
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch(`${API_BASE_URL}/api/habitaciones/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/habitaciones/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
       });

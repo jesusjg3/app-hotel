@@ -3,15 +3,10 @@ import Swal from "sweetalert2";
 import { FaUser, FaEnvelope, FaUserTag, FaEdit, FaTrashAlt, FaSearch, FaPlus, FaTh, FaList, FaUserCheck, FaCalendarAlt, FaClock, FaFilter } from "react-icons/fa";
 import "./ModernEmpleados.css";
 
-const API_BASE_URLS = [
-  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
-];
-
-const API_USUARIOS = `${API_BASE_URLS[0]}`;
-const API_ROLES = `${API_BASE_URLS[0]}`;
-
-
-
+// Solo una URL base, sin array
+const API_BASE_URL = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
+const API_USUARIOS = `${API_BASE_URL}/usuarios`;
+const API_ROLES = `${API_BASE_URL}/roles`;
 
 export default function TablaEmpleados() {
   const [empleados, setEmpleados] = useState([]);
@@ -30,15 +25,16 @@ export default function TablaEmpleados() {
   // Datos simulados adicionales para empleados
   const generarDatosAdicionales = (empleado) => ({
     ...empleado,
-    fecha_contratacion: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000 * 3).toISOString().split('T')[0],
-    estado: Math.random() > 0.2 ? 'Activo' : 'Inactivo',
-    ultimo_acceso: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    telefono: `+57 ${Math.floor(Math.random() * 900000000) + 300000000}`,
-    departamento: ['Recepción', 'Limpieza', 'Cocina', 'Mantenimiento', 'Administración'][Math.floor(Math.random() * 5)]
+    fecha_contratacion: empleado.fecha_contratacion || new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000 * 3).toISOString().split('T')[0],
+    estado: empleado.estado || (Math.random() > 0.2 ? 'Activo' : 'Inactivo'),
+    ultimo_acceso: empleado.ultimo_acceso || new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+    telefono: empleado.telefono || `+57 ${Math.floor(Math.random() * 900000000) + 300000000}`,
+    departamento: empleado.departamento || ['Recepción', 'Limpieza', 'Cocina', 'Mantenimiento', 'Administración'][Math.floor(Math.random() * 5)]
   });
 
   useEffect(() => {
     cargarDatos();
+    // eslint-disable-next-line
   }, []);
 
   const cargarDatos = async () => {

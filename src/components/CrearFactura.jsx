@@ -29,15 +29,7 @@ import {
 } from "react-icons/fa";
 import "./ModernFactura.css";
 
-const API_BASE_URLS = [
-  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
-];
-const API_URL = `${API_BASE_URLS[0]}`;
-
-
-
-
-
+const API_URL = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function CrearFactura() {
   const { reservaId } = useParams();
@@ -264,7 +256,7 @@ export default function CrearFactura() {
       };
 
       const token = localStorage.getItem("token");
-      const response = await fetch(`${API_BASE_URL}/facturar`, {
+      const response = await fetch(`${API_URL}/facturar`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -283,7 +275,7 @@ export default function CrearFactura() {
       setFacturaCreada(responseData);
       
       // Update reservation status to confirmed/paid
-      await fetch(`${API_BASE_URLS}/reservas/${reservaId}`, {
+      await fetch(`${API_URL}/reservas/${reservaId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -505,10 +497,10 @@ export default function CrearFactura() {
                         <span>{cliente.telefono}</span>
                       </div>
                     )}
-                    {cliente.email && (
+                    {(cliente.email || cliente.correo) && (
                       <div className="detail-item">
                         <FaEnvelope />
-                        <span>{cliente.email}</span>
+                        <span>{cliente.email || cliente.correo}</span>
                       </div>
                     )}
                     {cliente.direccion && (

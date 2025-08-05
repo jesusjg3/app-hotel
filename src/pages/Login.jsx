@@ -1,14 +1,10 @@
-// src/pages/Login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
-// Try different possible API URLs
-const API_BASE_URLS = [
-  "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
-];
-
-const API_URL = `${API_BASE_URLS[0]}/login`;
+// URL base única y clara para el backend
+const API_BASE_URL = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
+const API_LOGIN_URL = `${API_BASE_URL}/login`;
 
 const Login = () => {
   const [correo, setCorreo] = useState("");
@@ -21,28 +17,21 @@ const Login = () => {
 
   const { login } = useAuthContext();
 
-  // Test API connection and detect working endpoint
+  // Verifica la conexión con el backend
   React.useEffect(() => {
     const testConnection = async () => {
-      let connectionFound = false;
-      for (const baseUrl of API_BASE_URLS) {
-        try {
-          const response = await fetch(`${baseUrl}/user`, {
-            method: "GET",
-            headers: { "Accept": "application/json" },
-            mode: "cors",
-          });
-          console.log(`✅ API test for ${baseUrl}:`, response.status);
-          if (response.status !== 500) {
-            setBackendStatus("online");
-            connectionFound = true;
-            break;
-          }
-        } catch (err) {
-          console.warn(`❌ API test failed for ${baseUrl}:`, err.message);
+      try {
+        const response = await fetch(`${API_BASE_URL}/user`, {
+          method: "GET",
+          headers: { "Accept": "application/json" },
+          mode: "cors",
+        });
+        if (response.status !== 500) {
+          setBackendStatus("online");
+        } else {
+          setBackendStatus("offline");
         }
-      }
-      if (!connectionFound) {
+      } catch (err) {
         setBackendStatus("offline");
       }
     };
@@ -56,12 +45,11 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(API_LOGIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Accept": "application/json"
         },
         mode: "cors",
         body: JSON.stringify({ correo, password }),
@@ -90,18 +78,18 @@ const Login = () => {
         setShowModal(true);
       }
     } catch (err) {
-      console.error("Fetch error:", err);
-      if (err.name === "TypeError" && err.message.includes("fetch")) {
-        setModalMessage("🔌 No se puede conectar al servidor. Verifica que el backend esté ejecutándose en http://localhost:8000");
-      } else {
-        setModalMessage(`Error de conexión: ${err.message}`);
-      }
+      setModalMessage(
+        err.name === "TypeError" && err.message.includes("fetch")
+          ? "🔌 No se puede conectar al servidor. Verifica que el backend esté ejecutándose."
+          : `Error de conexión: ${err.message}`
+      );
       setShowModal(true);
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Estilos inline para el formulario y modal
   const containerStyle = {
     minHeight: "100vh",
     display: "flex",
@@ -111,14 +99,12 @@ const Login = () => {
     fontFamily: '"Segoe UI", Roboto, sans-serif',
     padding: "20px",
   };
-
   const wrapperStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
   };
-
   const formStyle = {
     display: "flex",
     flexDirection: "column",
@@ -131,7 +117,6 @@ const Login = () => {
     maxWidth: "400px",
     animation: "fadeIn 0.5s ease-in-out",
   };
-
   const titleStyle = {
     color: "#05445e",
     fontSize: "32px",
@@ -139,19 +124,16 @@ const Login = () => {
     margin: "0",
     flex: "1",
   };
-
   const formGroupStyle = {
     display: "flex",
     flexDirection: "column",
   };
-
   const labelStyle = {
     color: "#333333",
     fontSize: "15.2px",
     fontWeight: "600",
     marginBottom: "6px",
   };
-
   const inputStyle = {
     backgroundColor: "#f7fafc",
     border: "1.5px solid #ccdbe2",
@@ -162,12 +144,10 @@ const Login = () => {
     outline: "none",
     transition: "border 0.3s ease, box-shadow 0.3s ease",
   };
-
   const inputFocusStyle = {
     borderColor: "#00aaff",
     boxShadow: "0 0 0 3px rgba(0, 170, 255, 0.2)",
   };
-
   const buttonStyle = {
     background: "linear-gradient(90deg, #00b4d8, #0077b6)",
     border: "none",
@@ -182,7 +162,6 @@ const Login = () => {
     opacity: isLoading ? 0.7 : 1,
     pointerEvents: isLoading ? "none" : "auto",
   };
-
   const modalOverlayStyle = {
     position: "fixed",
     top: 0,
@@ -195,7 +174,6 @@ const Login = () => {
     alignItems: "center",
     zIndex: 10000,
   };
-
   const modalContentStyle = {
     background: "white",
     padding: "2rem",
@@ -206,19 +184,16 @@ const Login = () => {
     boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
     animation: "fadeIn 0.4s ease-out",
   };
-
   const modalIconStyle = {
     fontSize: "2.8rem",
     marginBottom: "10px",
   };
-
   const modalTextStyle = {
     fontSize: "1.1rem",
     fontWeight: "500",
     marginBottom: "20px",
     color: "#333",
   };
-
   const modalButtonStyle = {
     background: "#0077b6",
     color: "white",
@@ -248,7 +223,6 @@ const Login = () => {
           }
         `}
       </style>
-      
       <div style={containerStyle}>
         <div style={wrapperStyle}>
           <form style={formStyle} onSubmit={handleSubmit}>
@@ -278,7 +252,6 @@ const Login = () => {
                  backendStatus === "offline" ? "Backend Offline" : "Verificando..."}
               </div>
             </div>
-            
             <div style={formGroupStyle}>
               <label style={labelStyle}>Correo:</label>
               <input
@@ -292,7 +265,6 @@ const Login = () => {
                 onBlur={(e) => Object.assign(e.target.style, inputStyle)}
               />
             </div>
-
             <div style={formGroupStyle}>
               <label style={labelStyle}>Contraseña:</label>
               <input
@@ -305,7 +277,6 @@ const Login = () => {
                 onBlur={(e) => Object.assign(e.target.style, inputStyle)}
               />
             </div>
-
             <button 
               type="submit" 
               style={buttonStyle}
@@ -328,7 +299,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-
       {showModal && (
         <div style={modalOverlayStyle}>
           <div style={modalContentStyle}>
