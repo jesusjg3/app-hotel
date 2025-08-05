@@ -19,6 +19,7 @@ import {
 import "./ModernServiciosExtras.css";
 
 const API_SERVICIOS_EXTRA = "http://localhost:8000/api/servicios-extra";
+const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function ServiciosExtras() {
   const [servicios, setServicios] = useState([]);

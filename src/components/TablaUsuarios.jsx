@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import "./Sidebar.css";
 
 const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function CrearCliente() {
   const [nombre, setNombre] = useState("");

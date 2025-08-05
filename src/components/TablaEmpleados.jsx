@@ -5,6 +5,7 @@ import "./ModernEmpleados.css";
 
 const API_USUARIOS = "http://localhost:8000/api/usuarios";
 const API_ROLES = "http://localhost:8000/api/roles";
+const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function TablaEmpleados() {
   const [empleados, setEmpleados] = useState([]);

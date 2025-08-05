@@ -10,6 +10,7 @@ const API_BASE_URLS = [
   "http://localhost:8080/api"
 ];
 
+const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 const API_URL = `${API_BASE_URLS[0]}/login`;
 
 const Login = () => {

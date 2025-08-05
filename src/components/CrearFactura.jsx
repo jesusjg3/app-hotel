@@ -30,6 +30,7 @@ import {
 import "./ModernFactura.css";
 
 const API_BASE_URL = "http://localhost:8000/api";
+const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function CrearFactura() {
   const { reservaId } = useParams();

@@ -42,7 +42,11 @@ export default function Index() {
   const rol = user?.rol;
   const token = localStorage.getItem('token');
 
-  // Fetch real data from API
+  // URLs base
+  const API_BASE_URL = "http://localhost:8000";
+  const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
+  const API_URL = API_BASE_URL_REMOTE; // <--- Cambia a API_BASE_URL si trabajas localmente
+
   useEffect(() => {
     const fetchData = async () => {
       if (!token) return;
@@ -50,8 +54,7 @@ export default function Index() {
       try {
         setLoading(true);
         
-        // Fetch reservations
-        const reservasResponse = await fetch("http://localhost:8000/api/reservas", {
+        const reservasResponse = await fetch(`${API_URL}/api/reservas`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -66,9 +69,8 @@ export default function Index() {
           setStats(prev => ({ ...prev, reservas: reservasConfirmadas.length }));
         }
 
-        // Fetch users if admin
         if (rol === "Administrador") {
-          const usuariosResponse = await fetch("http://localhost:8000/api/usuarios", {
+          const usuariosResponse = await fetch(`${API_URL}/api/usuarios`, {
             headers: { 
               "Authorization": `Bearer ${token}`,
               "Accept": "application/json"
@@ -86,8 +88,7 @@ export default function Index() {
           }
         }
 
-        // Fetch habitaciones
-        const habitacionesResponse = await fetch("http://localhost:8000/api/habitaciones", {
+        const habitacionesResponse = await fetch(`${API_URL}/api/habitaciones`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -107,8 +108,7 @@ export default function Index() {
           }));
         }
 
-        // Fetch mesas
-        const mesasResponse = await fetch("http://localhost:8000/api/mesas", {
+        const mesasResponse = await fetch(`${API_URL}/api/mesas`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -128,8 +128,7 @@ export default function Index() {
           }));
         }
 
-        // Fetch salones
-        const salonesResponse = await fetch("http://localhost:8000/api/salones", {
+        const salonesResponse = await fetch(`${API_URL}/api/salones`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"
@@ -158,7 +157,6 @@ export default function Index() {
 
     fetchData();
   }, [fechaSeleccionada, rol, token]);
-
   const StatCard = ({ icon: Icon, title, value, subtitle, color, onClick }) => (
     <div 
       className={`stat-card ${onClick ? 'clickable' : ''}`}

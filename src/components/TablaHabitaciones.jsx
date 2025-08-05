@@ -21,6 +21,7 @@ import {
 import "./ModernHabitaciones.css";
 
 const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL_REMOTE = "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api";
 
 export default function TablaHabitaciones() {
   const [showForm, setShowForm] = useState(false);
