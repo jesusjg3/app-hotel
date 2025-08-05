@@ -1,0 +1,33 @@
+name: Despliegue Frontend React
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted]  
+
+    env:
+      PROJECT_NAME: frhotel2
+      BASE_PATH: /home/jesusjg3/programs
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Eliminar carpeta anterior
+        run: sudo rm -rf $BASE_PATH/$PROJECT_NAME
+
+      - name: Copia el nuevo proyecto
+        run: cp -r $GITHUB_WORKSPACE $BASE_PATH/$PROJECT_NAME
+
+      - name: Instalar dependencias y build de React
+        run: |
+          cd $BASE_PATH/$PROJECT_NAME
+          npm install
+          npm run build
+
+      - name: Copiar archivo .htaccess a dist/
+        run: cp home/jesus/plantillas/.htaccess $BASE_PATH/$PROJECT_NAME/dist/
