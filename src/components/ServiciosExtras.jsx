@@ -108,7 +108,7 @@ export default function ServiciosExtras() {
 
     if (!validarFormulario()) return;
 
-    const url = editandoId ? `${API_SERVICIOS_EXTRA}/${editandoId}` : API_SERVICIOS_EXTRA;
+    const url = editandoId ? `${API_SERVICIOS_EXTRA}${editandoId}` : API_SERVICIOS_EXTRA;
     const method = editandoId ? "PUT" : "POST";
 
     try {
@@ -166,7 +166,7 @@ export default function ServiciosExtras() {
     if (!confirm.isConfirmed) return;
 
     try {
-      const res = await fetch(`${API_SERVICIOS_EXTRA}/${id}`, {
+      const res = await fetch(`${API_SERVICIOS_EXTRA}${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });

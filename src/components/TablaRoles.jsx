@@ -114,7 +114,7 @@ export default function TablaRoles() {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/roles`, {
+      const response = await fetch(`${API_BASE_URL}`, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
           Accept: "application/json",
@@ -208,7 +208,7 @@ export default function TablaRoles() {
     try {
       let response;
       if (rolEditando) {
-        response = await fetch(`${API_BASE_URL}/roles/${rolEditando.id}`, {
+        response = await fetch(`${API_BASE_URL}${rolEditando.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -218,7 +218,7 @@ export default function TablaRoles() {
           body: JSON.stringify(rolData),
         });
       } else {
-        response = await fetch(`${API_BASE_URL}/roles`, {
+        response = await fetch(`${API_BASE_URL}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -284,7 +284,7 @@ export default function TablaRoles() {
     if (!result.isConfirmed) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/roles/${id}`, {
+      const response = await fetch(`${API_BASE_URL}${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${getToken()}`,
@@ -307,7 +307,7 @@ export default function TablaRoles() {
 
   const handleCambiarEstado = async (id, nuevoEstado) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/roles/${id}`, {
+      const response = await fetch(`${API_BASE_URL}${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

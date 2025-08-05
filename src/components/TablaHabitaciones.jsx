@@ -24,7 +24,7 @@ const API_BASE_URLS = [
   "https://steady-wallaby-inviting.ngrok-free.app/geshotel/api"
 ];
 
-const API_BASE_URL = `${API_BASE_URLS[0]}/habitaciones`;
+const API_BASE_URL = `${API_BASE_URLS[0]}`;
 
 
 export default function TablaHabitaciones() {
@@ -65,7 +65,7 @@ export default function TablaHabitaciones() {
     const token = localStorage.getItem("token");
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/habitaciones`, {
+      const response = await fetch(`${API_BASE_URL}/habitaciones`, {
         headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
       });
       if (response.ok) {
@@ -128,13 +128,13 @@ export default function TablaHabitaciones() {
     try {
       let response;
       if (habitacionEditando) {
-        response = await fetch(`${API_BASE_URL}/api/habitaciones/${habitacionEditando.id}`, {
+        response = await fetch(`${API_BASE_URL}${habitacionEditando.id}`, {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(habitacionData),
         });
       } else {
-        response = await fetch(`${API_BASE_URL}/api/habitaciones`, {
+        response = await fetch(`${API_BASE_URL}`, {
           method: "POST",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(habitacionData),
@@ -187,7 +187,7 @@ export default function TablaHabitaciones() {
 
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch(`${API_BASE_URL}/api/habitaciones/${id}`, {
+      const response = await fetch(`${API_BASE_URL}${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
       });
