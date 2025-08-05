@@ -1,0 +1,249 @@
+/* ========= Sidebar ========= */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #1d021f 0%, #24021e 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  min-height: 100vh;
+  position: relative;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.sidebar-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.sidebar-btn:hover::before {
+  left: 100%;
+}
+
+.sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(4px);
+}
+
+.sidebar-btn.active {
+  background: linear-gradient(135deg, #6d0c4d 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.sidebar-btn svg {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* ========= Panel General ========= */
+.hotel-panel {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: #f5f8fa;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.panel-header h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0;
+}
+
+/* ========= Selector de Fecha ========= */
+.fecha-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fecha-selector input[type="date"] {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* ========= Tabla de Reservas ========= */
+.reserva-section {
+  margin-bottom: 2rem;
+}
+
+.reserva-section h3 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.reserva-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.reserva-tabla thead {
+  background-color: #3498db;
+  color: white;
+}
+
+.reserva-tabla th,
+.reserva-tabla td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.reserva-tabla tr:hover {
+  background-color: #f1f1f1;
+}
+
+.sin-reservas {
+  color: #888;
+  font-style: italic;
+  padding: 1rem;
+}
+
+/* ========= Formularios ========= */
+.create-habitacion-form,
+.panel-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.create-habitacion-form label,
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 16px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* ========= Indicadores de Estado ========= */
+.mensaje {
+  color: green;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.error {
+  color: #cc0000;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* ========= Flecha decorativa ========= */
+.panel-arrow {
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%);
+}
+
+.arrow-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-right: 3px solid #0077b6;
+  border-bottom: 3px solid #0077b6;
+  transform: rotate(135deg);
+}
+
+.data-source {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 0.9em;
+}
