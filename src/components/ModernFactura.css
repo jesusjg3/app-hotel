@@ -1,0 +1,727 @@
+/* ========= Modern Factura Styles ========= */
+.modern-factura {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========= Header ========= */
+.factura-header {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title-icon {
+  font-size: 2.5rem;
+  color: #e67e22;
+  padding: 0.75rem;
+  background: rgba(230, 126, 34, 0.1);
+  border-radius: 12px;
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-title p {
+  margin: 0.25rem 0 0 0;
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ========= Loading and Error States ========= */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: #7f8c8d;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e9ecef;
+  border-top: 4px solid #e67e22;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  background: white;
+  margin: 2rem auto;
+  max-width: 500px;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 4rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.error-container h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+}
+
+/* ========= Factura Completada ========= */
+.factura-completada {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.success-message {
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #27ae60;
+  margin-bottom: 1rem;
+}
+
+.success-message h2 {
+  color: #27ae60;
+  margin-bottom: 0.5rem;
+}
+
+.success-message p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.factura-preview {
+  background: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.preview-header {
+  background: #e67e22;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.preview-header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.preview-content {
+  padding: 1.5rem;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.preview-row:last-child {
+  border-bottom: none;
+}
+
+.preview-row.total-row {
+  background: #27ae60;
+  color: white;
+  margin: 0.5rem -1.5rem -1.5rem -1.5rem;
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ========= Form Container ========= */
+.factura-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ========= Info Section ========= */
+.info-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.info-section h3 {
+  margin: 0 0 1.5rem 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid #e67e22;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.info-header svg {
+  font-size: 1.5rem;
+  color: #e67e22;
+}
+
+.info-header h4 {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.detail-item svg {
+  color: #e67e22;
+  font-size: 0.8rem;
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.duration-badge {
+  background: #e67e22;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ========= Costos Section ========= */
+.costos-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.costos-section h3 {
+  margin: 0 0 1.5rem 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.costos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.costo-item {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.costo-item:hover {
+  border-color: #e67e22;
+  background: white;
+}
+
+.costo-item.subtotal {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: white;
+}
+
+.costo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.costo-item.subtotal .costo-header {
+  color: white;
+}
+
+.costo-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #27ae60;
+  margin-bottom: 0.5rem;
+}
+
+.costo-item.subtotal .costo-value {
+  color: white;
+}
+
+.costo-description {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.costo-item.subtotal .costo-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========= Servicios Detail ========= */
+.servicios-detail {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.servicios-detail h4 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.servicios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.servicio-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 3px solid #e67e22;
+}
+
+.servicio-nombre {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.servicio-cantidad {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.servicio-precio {
+  font-weight: 600;
+  color: #27ae60;
+}
+
+/* ========= Form Styles ========= */
+.factura-form {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section h3 {
+  margin: 0 0 1.5rem 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+/* ========= Resumen Final ========= */
+.resumen-final {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.resumen-final h3 {
+  margin: 0 0 1rem 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.resumen-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.resumen-item:last-child {
+  border-bottom: none;
+}
+
+.resumen-item.descuento {
+  color: #e74c3c;
+}
+
+.resumen-item.total {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem -1.5rem -1.5rem -1.5rem;
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ========= Buttons ========= */
+.btn-primary {
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(230, 126, 34, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+.btn-print {
+  background: #17a2b8;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-print:hover {
+  background: #138496;
+}
+
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ========= Form Actions ========= */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+/* ========= Error Message ========= */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 1rem;
+}
+
+.error-message svg {
+  color: #721c24;
+}
+
+/* ========= Print Styles ========= */
+@media print {
+  .modern-factura {
+    background: white;
+    padding: 0;
+  }
+  
+  .factura-header,
+  .form-actions,
+  .header-actions {
+    display: none;
+  }
+  
+  .factura-completada {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .preview-content {
+    page-break-inside: avoid;
+  }
+}
+
+/* ========= Responsive Design ========= */
+@media (max-width: 768px) {
+  .modern-factura {
+    padding: 1rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .costos-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .resumen-item {
+    font-size: 0.9rem;
+  }
+  
+  .resumen-item.total {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title h1 {
+    font-size: 1.5rem;
+  }
+  
+  .title-icon {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+  
+  .info-card,
+  .costo-item {
+    padding: 1rem;
+  }
+  
+  .form-section {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ========= Animations ========= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.factura-completada,
+.info-section,
+.costos-section,
+.factura-form {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ========= Custom Scrollbar ========= */
+.modern-factura::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modern-factura::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modern-factura::-webkit-scrollbar-thumb {
+  background: #e67e22;
+  border-radius: 4px;
+}
+
+.modern-factura::-webkit-scrollbar-thumb:hover {
+  background: #d35400;
+}

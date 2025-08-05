@@ -1,0 +1,113 @@
+.contenedor-reserva {
+  max-width: 700px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.mensaje {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+}
+.mensaje.error {
+  color: red;
+  background-color: #fdd;
+}
+.mensaje.exito {
+  color: green;
+  background-color: #dfd;
+}
+
+.formulario-reserva .form-group {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-reserva label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formulario-reserva select,
+.formulario-reserva input[type="date"],
+.formulario-reserva input[type="number"] {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.servicio-extra-item {
+  margin-bottom: 5px;
+}
+
+.cantidad-servicio {
+  width: 60px;
+  margin-left: 10px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.btn-submit.crear {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-submit.actualizar {
+  background-color: #ffc107;
+  color: black;
+}
+
+.separador {
+  margin: 20px 0;
+}
+
+.tabla-reservas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabla-reservas th,
+.tabla-reservas td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabla-reservas thead {
+  background-color: #f0f0f0;
+}
+
+.btn-confirmar,
+.btn-editar,
+.btn-eliminar {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 13px;
+}
+
+.btn-confirmar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-eliminar {
+  background-color: #dc3545;
+  color: white;
+}

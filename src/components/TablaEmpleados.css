@@ -1,0 +1,57 @@
+.hotel-panel {
+  margin: 2rem auto;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.hotel-panel h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.empleado-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.empleado-form label {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+.empleado-form input,
+.empleado-form select {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.empleado-form button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.empleado-form button:hover {
+  background-color: #0056b3;
+}
+
+.mensaje {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
