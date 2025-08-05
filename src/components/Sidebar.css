@@ -1,7 +1,7 @@
 /* ========= Sidebar ========= */
 .sidebar {
   width: 240px;
-  background: linear-gradient(180deg, #003348 0%, #1a495a 100%);
+  background: linear-gradient(180deg, #1d021f 0%, #24021e 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -68,7 +68,7 @@
 }
 
 .sidebar-btn.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6d0c4d 0%, #764ba2 100%);
   color: white;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }

@@ -18,7 +18,7 @@
 /* Sidebar (asegúrate de usar esta clase en tu componente Sidebar) */
 .sidebar {
   width: 240px;
-  background: linear-gradient(180deg, #003348 0%, #1a495a 100%);
+  background: linear-gradient(180deg, #540735 0%, #670754 100%);
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
